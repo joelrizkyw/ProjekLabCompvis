@@ -90,6 +90,18 @@ def get_test_images_data(test_root_path):
         list
             List containing all loaded gray test images
     '''
+    test_list = []
+
+    for file_name in os.listdir(test_root_path):
+
+        full_path = test_root_path + "/" + file_name
+
+        img = cv.imread(full_path)
+        img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+
+        test_list.append(img_gray)
+    
+    return test_list
 
 def predict(recognizer, test_faces_gray):
     '''
