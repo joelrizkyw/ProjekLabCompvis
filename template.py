@@ -163,7 +163,7 @@ if __name__ == '__main__':
         Modifiable
         -------------------
     '''
-    train_root_path = 'Dataset/Train'
+    train_root_path = 'dataset/train'
     '''
         -------------------
         End of modifiable
@@ -182,7 +182,7 @@ if __name__ == '__main__':
         Modifiable
         -------------------
     '''
-    test_root_path = 'Dataset/Test'
+    test_root_path = 'dataset/test'
     '''
         -------------------
         End of modifiable
