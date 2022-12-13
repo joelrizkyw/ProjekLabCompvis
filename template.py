@@ -90,7 +90,7 @@ def get_test_images_data(test_root_path):
         list
             List containing all loaded gray test images
     '''
-    test_list = []
+    test_list = [] 
 
     for file_name in os.listdir(test_root_path):
 
@@ -119,6 +119,14 @@ def predict(recognizer, test_faces_gray):
         list
             List containing all prediction results from given test faces
     '''
+    face_cascade = cv.CascadeClassifier("haarcascades/haarcascade_frontalface_default.xml")
+
+    for face_gray in test_faces_gray:
+
+        # detected_face = 
+
+        print()
+
 
 def draw_prediction_results(predict_results, test_image_list, test_faces_rects, train_names):
     '''
