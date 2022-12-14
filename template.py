@@ -58,6 +58,30 @@ def detect_faces_and_filter(image_list, image_classes_list=None):
         list
             List containing all filtered image classes id
     '''
+    face_cascade = cv.CascadeClassifier("haarcascades/haarcascade_frontalface_default.xml")
+
+    filtered_cropped_images_list = []
+    rects_list = []
+    filtered_images_class_list = []
+
+    for image in image_list:
+
+        image_gray = cv.cvtColor(image, cv.COLOR_BAYER_BG2GRAY)
+
+        detected_face = face_cascade.detectMultiScale(image_gray, scaleFactor = 1.2, minNeighbors = 5)
+
+        if len(detected_face) < 1:
+
+            # filter
+            print()
+        
+        for face_rect in detected_face:
+
+            rects_list.append(face_rect)
+        
+    return filtered_cropped_images_list, rects_list, filtered_images_class_list
+
+
 
 def train(train_face_grays, image_classes_list):
     '''
@@ -94,11 +118,13 @@ def get_test_images_data(test_root_path):
 
     for file_name in os.listdir(test_root_path):
 
+        # full path untuk setiap image test
         full_path = test_root_path + "/" + file_name
 
-        img = cv.imread(full_path)
-        img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+        # baca image dan filter menjadi grayscale
+        img_gray = cv.imread(full_path, 0)
 
+        # masukkan 
         test_list.append(img_gray)
     
     return test_list
@@ -121,11 +147,13 @@ def predict(recognizer, test_faces_gray):
     '''
     face_cascade = cv.CascadeClassifier("haarcascades/haarcascade_frontalface_default.xml")
 
-    for face_gray in test_faces_gray:
+    if len(test_faces_gray) > 0:
 
-        # detected_face = 
+        for face_rect in test_faces_gray:
 
-        print()
+            x, y, h, w = face_rect
+
+            face_img 
 
 
 def draw_prediction_results(predict_results, test_image_list, test_faces_rects, train_names):
