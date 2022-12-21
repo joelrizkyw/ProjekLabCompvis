@@ -153,7 +153,7 @@ def predict(recognizer, test_faces_gray):
 
             x, y, h, w = face_rect
 
-            face_img 
+            # face_img 
 
 
 def draw_prediction_results(predict_results, test_image_list, test_faces_rects, train_names):
