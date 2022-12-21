@@ -73,7 +73,7 @@ def detect_faces_and_filter(image_list, image_classes_list=None):
         if len(detected_face) < 1:
 
             # filter
-            print()
+            continue
         
         for face_rect in detected_face:
 
