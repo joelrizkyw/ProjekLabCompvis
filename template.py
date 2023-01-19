@@ -258,15 +258,15 @@ def combine_and_show_result(image_list):
     for image in image_list:
 
         resized_image = cv.resize(image, (250, 250), interpolation = cv.INTER_AREA)
-        # resized_image = cv.cvtColor(resized_image, cv.COLOR_GRAY2BGR)
         resized_image_list.append(resized_image)
 
-    first_row = np.hstack((resized_image_list[0], resized_image_list[1], resized_image_list[2]))
-    second_row = np.hstack((resized_image_list[3], resized_image_list[4], resized_image_list[5]))
+    first_col = np.vstack((resized_image_list[0], resized_image_list[3]))
+    second_col = np.vstack((resized_image_list[1], resized_image_list[4]))
+    third_col = np.vstack((resized_image_list[2], resized_image_list[5]))
 
-    combined_rows = np.vstack((first_row, second_row))
+    combined_cols = np.hstack((first_col, second_col, third_col))
 
-    cv.imshow("Result", combined_rows)
+    cv.imshow("Result", combined_cols)
     cv.waitKey(0)
     
 
